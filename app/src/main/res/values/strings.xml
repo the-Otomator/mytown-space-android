@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My App</string>
+
+    <!-- TWA: URL of your web app -->
+    <string name="launch_url">https://your-app.com</string>
+
+    <!-- Gesher: your API endpoint -->
+    <string name="gesher_api_url">https://api.gesher.pro</string>
+
+    <!-- Gesher: Bearer token for your app (from Gesher dashboard) -->
+    <string name="gesher_api_key">YOUR_GESHER_API_KEY</string>
+
+    <!-- TWA asset link host (must match launch_url domain) -->
+    <string name="asset_statements" translatable="false">
+        [{&quot;relation&quot;: [&quot;delegate_permission/common.handle_all_urls&quot;],
+          &quot;target&quot;: {&quot;namespace&quot;: &quot;web&quot;, &quot;site&quot;: &quot;https://your-app.com&quot;}}]
+    </string>
+</resources>

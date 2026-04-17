@@ -18,19 +18,30 @@ jobs:
 
       - name: Decode keystore
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > app/keystore.p12
+          echo "${{ secrets.GESHER_KEYSTORE_B64 }}" | base64 --decode > app/keystore.p12
 
       - name: Build signed release AAB
         run: ./gradlew bundleRelease
         env:
           SIGNING_STORE_FILE: keystore.p12
-          SIGNING_STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-          SIGNING_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.GESHER_KEYSTORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.GESHER_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.GESHER_KEYSTORE_PASSWORD }}
 
       - name: Upload AAB artifact
+        id: upload
         uses: actions/upload-artifact@v4
         with:
           name: release-aab
           path: app/build/outputs/bundle/release/app-release.aab
           retention-days: 30
+
+      - name: Notify Gesher
+        if: success()
+        run: |
+          ARTIFACT_ID="${{ steps.upload.outputs.artifact-id }}"
+          URL="https://api.github.com/repos/${{ github.repository }}/actions/artifacts/${ARTIFACT_ID}/zip"
+          curl -X POST https://api.gesher.pro/dashboard/builds/webhook \
+            -H "Authorization: Bearer ${{ secrets.GESHER_BUILD_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"appId\":\"${{ secrets.GESHER_APP_ID }}\",\"runId\":\"${{ github.run_id }}\",\"status\":\"success\",\"aabDownloadUrl\":\"$URL\"}"

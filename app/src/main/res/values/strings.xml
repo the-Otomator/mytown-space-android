@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">My App</string>
+    <string name="app_name">MTS</string>
 
     <!-- TWA: URL of your web app -->
-    <string name="launch_url">https://your-app.com</string>
+    <string name="launch_url">https://mytown.space</string>
 
     <!-- Gesher: your API endpoint -->
     <string name="gesher_api_url">https://api.gesher.pro</string>
 
     <!-- Gesher: Bearer token for your app (from Gesher dashboard) -->
-    <string name="gesher_api_key">YOUR_GESHER_API_KEY</string>
+    <string name="gesher_api_key">209a2a5f5b4a48272269404239462f34e0988dd4dcb81f7a42f79eaa0f2bfb4eda521158570310299081939c20da10a2</string>
 
     <!-- TWA asset link host (must match launch_url domain) -->
     <string name="asset_statements" translatable="false">
         [{&quot;relation&quot;: [&quot;delegate_permission/common.handle_all_urls&quot;],
-          &quot;target&quot;: {&quot;namespace&quot;: &quot;web&quot;, &quot;site&quot;: &quot;https://your-app.com&quot;}}]
+          &quot;target&quot;: {&quot;namespace&quot;: &quot;web&quot;, &quot;site&quot;: &quot;https://mytown.space&quot;}}]
     </string>
 </resources>

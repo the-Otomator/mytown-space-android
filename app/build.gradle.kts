@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "pro.gesher.twa"
+    namespace = "space.mytown.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "pro.gesher.twa"
+        applicationId = "space.mytown.app"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

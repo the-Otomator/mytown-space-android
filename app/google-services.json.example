@@ -1,7 +1,0 @@
-{
-  "_comment": "Replace this file with google-services.json from Firebase Console (Android app). Do not commit real google-services.json to public repos.",
-  "project_info": {
-    "project_id": "YOUR_FIREBASE_PROJECT_ID"
-  },
-  "client": []
-}
